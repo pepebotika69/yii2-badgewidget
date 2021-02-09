@@ -18,7 +18,7 @@ use yii\helpers\Html;
  * @property string $attribute
  * @property boolean $useBadges
  * @property string|false $allBadgeClass
- * @property string $linkAttribute
+ * @property string|array $linkAttribute
  * @property array|false $linkScheme
  * @property string $itemsSeparator
  * @property string $moreBadgeTooltipSeparator
@@ -47,10 +47,10 @@ class BadgeWidget extends CachedWidget {
 	public bool|int $unbadgedCount = false;//Количество объектов, не сворачиваемых в бейдж
 	public bool $useBadges = true;//использовать бейджи для основного списка.
 
-	public string $linkAttribute = 'id';//Атрибут, подставляемый в ссылку по схеме в $linkScheme. Строка, или массив строк (в этом случае подстановка идёт по порядку).
+	public string|array $linkAttribute = 'id';//Атрибут, подставляемый в ссылку по схеме в $linkScheme. Строка, или массив строк (в этом случае подстановка идёт по порядку).
 	public bool|array $linkScheme = false;//Url-схема, например ['/groups/groups/profile', 'id' => 'id'] (Значение id будет взято из аттрибута id текущей модели), если false - то не используем ссылки
 	public string $itemsSeparator = ', ';//Разделитель объектов
-	public array $optionsMap = []; //Массив HTML-опций для каждого бейджа ([optionsMapAttributeValue => options])". Если установлен, мержится с $badgeOptions
+	public array|object $optionsMap = []; //Массив HTML-опций для каждого бейджа ([optionsMapAttributeValue => options])". Если установлен, мержится с $badgeOptions
 	public null|string $optionsMapAttribute = null; //Имя аттрибута, используемого для подбора значения в $optionsMap, если null, то используется primaryKey (или id, если модель не имеет первичного ключа)
 	public array $badgeOptions = ['class' => 'badge'];//дефолтная опция для бейджа
 	public array $moreBadgeOptions = ['class' => 'badge pull-right'];//Массив HTML-опций для бейджа "ещё".
