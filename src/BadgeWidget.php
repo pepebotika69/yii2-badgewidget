@@ -16,13 +16,13 @@ use yii\helpers\Html;
  * Class BadgeWidget
  * @property string|array|object|callable $models
  * @property string $attribute
- * @property boolean $useBadges
+ * @property bool $useBadges
  * @property string|false $allBadgeClass
  * @property string|array $linkAttribute
  * @property array|false $linkScheme
  * @property string $itemsSeparator
  * @property string $moreBadgeTooltipSeparator
- * @property integer|false $unbadgedCount
+ * @property int|false $unbadgedCount
  * @property array|callable $optionsMap
  * @property null|string $optionsMapAttribute
  * @property array $badgeOptions
@@ -125,7 +125,7 @@ class BadgeWidget extends CachedWidget {
 						foreach ($value as $index => $item) {
 							$arrayedParameters["{$key}[{$index}]"] = $item;
 						}
-					} else if ($model->hasProperty($value) && false !== $attributeValue = ArrayHelper::getValue($model, $value, false)) $value = $attributeValue;
+					} elseif ($model->hasProperty($value) && false !== $attributeValue = ArrayHelper::getValue($model, $value, false)) $value = $attributeValue;
 
 				});
 				if ([] !== $arrayedParameters) $currentLinkScheme = array_merge(...$arrayedParameters);//если в схеме были переданы значения массивом, включаем их разбор в схему
